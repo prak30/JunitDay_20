@@ -24,11 +24,17 @@ class UserRegistrationJunitTest {
 		Assert.assertEquals(false, result);
 	}
 
-	@Test
+//	@Test
 	public void givenLastName_WhenProper_ShouldReturnTrue() {
 		boolean result = userRegistration.firstName("Katkar");
 		Assert.assertEquals(true, result);
 
+	}
+
+	@Test
+	public void givenEmail_WhenProper_ShouldReturnTrue() {
+		boolean result = userRegistration.email("prnvkatkar88@gmail.com");
+		Assert.assertEquals(true, result);
 	}
 
 }
