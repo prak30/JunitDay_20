@@ -31,9 +31,15 @@ class UserRegistrationJunitTest {
 
 	}
 
-	@Test
+//	@Test
 	public void givenEmail_WhenProper_ShouldReturnTrue() {
 		boolean result = userRegistration.email("prnvkatkar88@gmail.com");
+		Assert.assertEquals(true, result);
+	}
+
+	@Test
+	public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
+		boolean result = userRegistration.phoneNumber("91 9822418099");
 		Assert.assertEquals(true, result);
 	}
 
