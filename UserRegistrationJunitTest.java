@@ -55,9 +55,15 @@ class UserRegistrationJunitTest {
 		Assert.assertEquals(false, result);
 	}
 	
-	 @Test
+//	 @Test
 	    public void givenPasswordRule2_WhenProper_ShouldReturnTrue() {
 	        boolean result = userRegistration.passwordRule2("Prak@3000");
+	        Assert.assertEquals(true, result);
+	    }
+	 
+	 @Test
+	    public void givenPasswordRule3_WhenProper_ShouldReturnTrue() {
+	        boolean result = userRegistration.passwordRule3("Prak@3000");
 	        Assert.assertEquals(true, result);
 	    }
 
