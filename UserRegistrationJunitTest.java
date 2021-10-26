@@ -37,10 +37,22 @@ class UserRegistrationJunitTest {
 		Assert.assertEquals(true, result);
 	}
 
-	@Test
+//	@Test
 	public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
 		boolean result = userRegistration.phoneNumber("91 9822418099");
 		Assert.assertEquals(true, result);
+	}
+	
+	 @Test
+	    public void givenPassword_WhenProper_ShouldReturnTrue() {
+	        boolean result = userRegistration.password("prak@30");
+	        Assert.assertEquals(true, result);
+	    }
+
+	@Test
+	public void givenPassword_WhenNotProper_ShouldReturnFalse() {
+		boolean result = userRegistration.password("pra@12345678");
+		Assert.assertEquals(false, result);
 	}
 
 }

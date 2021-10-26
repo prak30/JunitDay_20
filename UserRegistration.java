@@ -25,11 +25,18 @@ public class UserRegistration {
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
-	
-	 public boolean phoneNumber (String phoneNumber){
-         String regex = "^[0-9]{2}+[\s]+[0-9]{10}$";
-         Pattern pattern = Pattern.compile(regex);
-         Matcher matcher = pattern.matcher(phoneNumber);
-         return matcher.matches();
-     }
+
+	public boolean phoneNumber(String phoneNumber) {
+		String regex = "^[0-9]{2}+[\s]+[0-9]{10}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(phoneNumber);
+		return matcher.matches();
+	}
+
+	public boolean password(String password) {
+		String regex = "^[A-Z a-z 0-9]{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
+	}
 }
