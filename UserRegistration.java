@@ -4,67 +4,102 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
+	private static final String EMAIL_ADDRESS_PATTERN = "^[a-z0-9]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$";
 
-	public boolean firstName(String firstName) {
+	public boolean firstName(String firstName) throws UserDefinedExceptions {
 		String regex = "^[A-Z]{1}[a-z]{2,}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(firstName);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
+
 		return matcher.matches();
 	}
 
-	public boolean lastName(String lastName) {
+	public boolean lastName(String lastName) throws UserDefinedExceptions {
 		String regex = "^[A-Z]{1}[a-z]{2,}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(lastName);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
 
-	public boolean email(String email) {
+	public boolean email(String email) throws UserDefinedExceptions {
 		String regex = "^[a-z0-9]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(email);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
 
-	public boolean phoneNumber(String phoneNumber) {
+	public boolean phoneNumber(String phoneNumber) throws UserDefinedExceptions {
 		String regex = "^[0-9]{2}+[\s]+[0-9]{10}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(phoneNumber);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
 
-	public boolean password(String password) {
+	public boolean password(String password) throws UserDefinedExceptions {
 		String regex = "^[A-Z a-z 0-9]{8,}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(password);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
-	
-	public boolean passwordRule2(String password) {
+
+	public boolean passwordRule2(String password) throws UserDefinedExceptions {
 		String regex = "(?=.*[A-Z]).{8,}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(password);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
-	
-	public boolean passwordRule3(String password) {
+
+	public boolean passwordRule3(String password) throws UserDefinedExceptions {
 		String regex = "(?=.*[A-Z])(?=.*[0-9]).{8,}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(password);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
-	
-	public boolean passwordRule4(String password) {
+
+	public boolean passwordRule4(String password) throws UserDefinedExceptions {
 		String regex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&!]).{8,}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(password);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
+		return matcher.matches();
+	}
+
+	public boolean emailIdValidator(String emailId) throws UserDefinedExceptions {
+		Pattern pattern = Pattern.compile(EMAIL_ADDRESS_PATTERN);
+		Matcher matcher = pattern.matcher(emailId);
+		if (!matcher.matches()) {
+			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
 		return matcher.matches();
 	}
 	
-	 public boolean emailIdValidator(String emailId) {
-	        String regex = "^[a-z0-9]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$";
-	        Pattern pattern = Pattern.compile(regex);
-	        Matcher matcher = pattern.matcher(emailId);
-	        return matcher.matches();
-	    }
+	public static void main(String[] args) throws UserDefinedExceptions {
+		UserRegistration userRegistration = new UserRegistration();
+		userRegistration.firstName("Pranav");
+		userRegistration.lastName("Katkar");
+		System.out.println("firstname" +userRegistration.firstName("Pranavkkkk"));
+	}
 }
