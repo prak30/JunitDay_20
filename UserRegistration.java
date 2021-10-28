@@ -10,8 +10,13 @@ public class UserRegistration {
 		String regex = "^[A-Z]{1}[a-z]{2,}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(firstName);
+		try {
 		if (!matcher.matches()) {
 			throw new UserDefinedExceptions("Enter a valid pattern");
+		}
+		}catch (UserDefinedExceptions e) {
+			System.out.println("Exception:" +e.getMessage());
+			
 		}
 
 		return matcher.matches();
@@ -98,8 +103,7 @@ public class UserRegistration {
 	
 	public static void main(String[] args) throws UserDefinedExceptions {
 		UserRegistration userRegistration = new UserRegistration();
-		userRegistration.firstName("Pranav");
-		userRegistration.lastName("Katkar");
-		System.out.println("firstname" +userRegistration.firstName("Pranavkkkk"));
+		userRegistration.firstName("pranav");
+	//	userRegistration.lastName("Katkar");
 	}
 }
